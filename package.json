@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "![Actions Status](/workflows/hexlet-check/badge.svg)",
