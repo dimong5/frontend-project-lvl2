@@ -1,0 +1,22 @@
+---
+
+plugins:
+  - import
+
+# https://eslint.org/docs/user-guide/configuring#specifying-environments
+env:
+  node: true
+
+extends:
+  - 'airbnb-base'
+  - eslint:recommended
+  - plugin:import/errors
+  - plugin:import/warnings
+
+parserOptions:
+  ecmaVersion: 11
+  sourceType: module
+
+rules:
+  no-console: 0
+  import/extensions: 0 # FIXME: remove when rule will be adjusted for new nodejs version

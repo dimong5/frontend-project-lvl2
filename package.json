@@ -1,8 +1,12 @@
 {
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
   "name": "@hexlet/code",
+  "type": "module",
   "version": "1.0.0",
   "description": "![Actions Status](/workflows/hexlet-check/badge.svg)",
-  "main": "index.js",
+  "main": "src/genDiff.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +21,12 @@
   },
   "homepage": "https://github.com/dimong5/frontend-project-lvl2#readme",
   "dependencies": {
-    "commander": "^6.2.0"
+    "commander": "^6.2.0",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
   }
 }
