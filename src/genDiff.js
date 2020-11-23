@@ -1,30 +1,37 @@
 import _ from 'lodash';
 import fs from 'fs';
+import path from 'path';
 
 export default (filepath1, filepath2) => {
-  const object1 = JSON.parse(fs.readFileSync(filepath1, 'utf8'));
-  const object2 = JSON.parse(fs.readFileSync(filepath2, 'utf8'));
+
+  const absolutePath1 = path.resolve(filepath1);
+  const absolutePath2 = path.resolve(filepath2);
+  const object1 = JSON.parse(fs.readFileSync(absolutePath1, 'utf8'));
+  const object2 = JSON.parse(fs.readFileSync(absolutePath2, 'utf8'));
 
   const object1Keys = Object.keys(object1);
   const object2Keys = Object.keys(object2);
   const keysUniq = _.uniq(object1Keys.concat(object2Keys)).sort();
 
-  const addToString = (str, data) => str.concat(`  ${data}`);
-
   const diff = keysUniq.reduce((acc, key) => {
     if (!_.has(object2, key)) {
-      return addToString(acc, `- ${key}: ${object1[key]}\n`);
+      return [...acc, { [`- ${key}`]: object1[key] }];
     }
-    if (_.has(object2, key) && !_.has(object1, key)) {
-      return addToString(acc, `+ ${key}: ${object2[key]}\n`);
+    if (!_.has(object1, key)) {
+      return [...acc, { [`+ ${key}`]: object2[key] }];
     }
     if (object1[key] !== object2[key]) {
-      return addToString(acc, `- ${key}: ${object1[key]}\n  + ${key}: ${object2[key]}\n`);
+      return [...acc, { [`- ${key}`]: object1[key] }, { [`+ ${key}`]: object2[key] }];
     }
-    return addToString(acc, `  ${key}: ${object2[key]}\n`);
+    return [...acc, { [`  ${key}`]: object2[key] }];
+  }, []);
+
+  const diffToString = diff.reduce((acc, obj) => {
+    const extractedEntries = Object.entries(obj);
+    const [key, value] = extractedEntries.flat();
+    return acc.concat(`  ${key}: ${value}\n`);
   }, '{\n');
+  console.log(diffToString);
 
-  const diffClosed = diff.concat('}');
-
-  console.log(diffClosed);
+  return diffToString.concat('}');
 };
