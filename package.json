@@ -22,6 +22,7 @@
   "homepage": "https://github.com/dimong5/frontend-project-lvl2#readme",
   "dependencies": {
     "commander": "^6.2.0",
+    "js-yaml": "^3.14.0",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
