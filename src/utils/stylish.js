@@ -26,7 +26,7 @@ const stylish = (diffTree) => {
         return [`${currentIndent}- ${node.key}: ${stringify(node.value[0], depth + 1)}`,
           `${currentIndent}+ ${node.key}: ${stringify(node.value[1], depth + 1)}`];
       case 'nested':
-        return [`${currentIndent}  ${stringify(node.key, depth + 1)}: {`,
+        return [`${currentIndent}  ${node.key}: {`,
           ...iter(node.children, depth + 1), `${bracketIndent}}`];
       default:
         throw new Error('Unknown type of node');

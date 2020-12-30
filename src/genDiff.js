@@ -2,6 +2,7 @@ import _ from 'lodash';
 import path from 'path';
 import parseFileFormat from './utils/parsers.js';
 import stylish from './utils/stylish.js';
+import plain from './utils/plain.js';
 
 export default (filepath1, filepath2, formatter = 'stylish') => {
   const absolutePath1 = path.resolve(filepath1);
@@ -42,10 +43,11 @@ export default (filepath1, filepath2, formatter = 'stylish') => {
   };
 
   const diff = calculateDiff(object1, object2);
-  console.log('stylish\n', stylish(diff));
-  console.log('formatter', typeof (formatter));
+  // console.log('plain\n', plain(diff));
+  // console.log('formatter', typeof (formatter));
   switch (formatter) {
     case 'stylish': return stylish(diff);
+    case 'plain': return plain(diff);
     default: throw new Error('Unknown formatter');
   }
 };
