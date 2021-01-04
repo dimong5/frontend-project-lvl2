@@ -1,5 +1,7 @@
 gendiff:
 	node bin/gendiff.js
+run:
+	bin/gendiff.js
 lint:
 	npx eslint .
 install:
@@ -7,4 +9,4 @@ install:
 test:
 	npx -n --experimental-vm-modules jest
 test-coverage:
-	npm test -- --coverage --coverageProvider=v8
+	npx -n --experimental-vm-modules jest -- --coverage --coverageProvider=v8
