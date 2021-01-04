@@ -9,7 +9,6 @@ program
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format [type]', 'output format', 'stylish')
   .action((filepath1, filepath2, option) => {
-    console.log('program.format', option.format);
     if (option.format === 'stylish') genDiff(filepath1, filepath2, 'stylish');
     else if (option.format !== 'stylish') genDiff(filepath1, filepath2, option.format);
   });

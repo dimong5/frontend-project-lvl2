@@ -24,6 +24,5 @@ export default (diffTree) => {
         throw new Error('Unknown type of node');
     }
   });
-  console.log([...iter(diffTree, '')].join('\n'));
   return [...iter(diffTree, '')].join('\n');
 };

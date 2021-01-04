@@ -13,7 +13,7 @@ export default (filepath1, filepath2, formatter = 'stylish') => {
   const calculateDiff = (obj1, obj2) => {
     const object1Keys = Object.keys(obj1);
     const object2Keys = Object.keys(obj2);
-    const keysUniq = _.uniq(object1Keys.concat(object2Keys)).sort();
+    const keysUniq = _.uniq([...object1Keys, ...object2Keys]).sort();
 
     return keysUniq.map((key) => {
       const value1 = obj1[key];
