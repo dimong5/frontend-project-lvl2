@@ -8,27 +8,22 @@ const __dirname = dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
-test('genDiff JSON files stylish formatter', () => {
-  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json')))
-    .toEqual(readFile('expected_file_stylish'));
+
+test.each([
+  ['file1.json', 'file2.json', 'expected_file_stylish'],
+  ['file1.yml', 'file2.yml', 'expected_file_stylish'],
+  ['file1.json', 'file2.yml', 'expected_file_stylish'],
+])('genDiff(%s, %s) is equal to %s', (file1, file2, expected) => {
+  expect(genDiff(getFixturePath(file1), getFixturePath(file2)))
+    .toEqual(readFile(expected));
 });
-test('genDiff YAML files stylish formatter', () => {
-  expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml')))
-    .toEqual(readFile('expected_file_stylish'));
-});
-test('genDiff JSON files plain formatter', () => {
-  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'plain'))
-    .toEqual(readFile('expected_file_plain'));
-});
-test('genDiff YAML files plain formatter', () => {
-  expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'plain'))
-    .toEqual(readFile('expected_file_plain'));
-});
-test('genDiff JSON files json formatter', () => {
-  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'json'))
-    .toEqual(readFile('expected_file_json'));
-});
-test('genDiff YAML files json formatter', () => {
-  expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'json'))
-    .toEqual(readFile('expected_file_json'));
+
+test.each([
+  ['file1.json', 'file2.json', 'stylish', 'expected_file_stylish'],
+  ['file1.yml', 'file2.yml', 'stylish', 'expected_file_stylish'],
+  ['file1.json', 'file2.yml', 'plain', 'expected_file_plain'],
+  ['file1.json', 'file2.yml', 'json', 'expected_file_json'],
+])('genDiff1(%s, %s, %s) is equal to %s', (file1, file2, formatter, expected) => {
+  expect(genDiff(getFixturePath(file1), getFixturePath(file2), formatter))
+    .toEqual(readFile(expected));
 });

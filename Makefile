@@ -1,7 +1,3 @@
-gendiff:
-	node bin/gendiff.js
-run:
-	bin/gendiff.js
 lint:
 	npx eslint .
 install:
