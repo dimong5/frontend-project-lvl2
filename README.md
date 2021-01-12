@@ -33,9 +33,13 @@ $ make test
 ```sh
 $ make lint
 ```
-
+#### Comparison of two flat JSON files
 [![asciicast](https://asciinema.org/a/LC3SrsvWs8oXzpVHjs5gYr6cm.svg)](https://asciinema.org/a/LC3SrsvWs8oXzpVHjs5gYr6cm)
+#### Comparison of two flat YAML files
 [![asciicast](https://asciinema.org/a/nagShNGLy68aa2WG6jZJ4qtxu.svg)](https://asciinema.org/a/nagShNGLy68aa2WG6jZJ4qtxu)
+#### Comparison of two nested JSON files
 [![asciicast](https://asciinema.org/a/44G8CHKy6Uw1toASlWPVPqJWz.svg)](https://asciinema.org/a/44G8CHKy6Uw1toASlWPVPqJWz)
+#### Comparison of two nested JSON files with plain output
 [![asciicast](https://asciinema.org/a/yKmGjZu0V5M7TjPqmxdqVewVq.svg)](https://asciinema.org/a/yKmGjZu0V5M7TjPqmxdqVewVq)
+#### Full demonstration of the program
 [![asciicast](https://asciinema.org/a/ar7l0LREJ2dHAczuWDblQKFIM.svg)](https://asciinema.org/a/ar7l0LREJ2dHAczuWDblQKFIM)
