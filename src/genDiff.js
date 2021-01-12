@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import parseFileData from './parsers.js';
 import format from './formatters/index.js';
-import makeDiff from './makeDiff';
+import makeDiff from './makeDiff.js';
 
 const defineFileFormat = (filepath) => {
   const fileExtension = path.extname(filepath);
