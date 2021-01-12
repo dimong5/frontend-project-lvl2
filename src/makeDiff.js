@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 const makeDiff = (obj1, obj2) => {
   const keysUniq = _.union(Object.keys(obj1), Object.keys(obj2));
-  const keysUniqSorted = [...keysUniq].sort();
+  const keysUniqSorted = _.sortBy(keysUniq);
   return keysUniqSorted.map((key) => {
     const value1 = obj1[key];
     const value2 = obj2[key];
