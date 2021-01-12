@@ -19,8 +19,8 @@ export default (filepath1, filepath2, formatter = 'stylish') => {
   const firstConfigData = fs.readFileSync(configPath1);
   const secondConfigData = fs.readFileSync(configPath2);
 
-  const object1 = parseFileData(firstConfigData, defineFileFormat(filepath1));
-  const object2 = parseFileData(secondConfigData, defineFileFormat(filepath2));
+  const object1 = parseFileData(firstConfigData, defineFileFormat(configPath1));
+  const object2 = parseFileData(secondConfigData, defineFileFormat(configPath2));
   const diff = makeDiff(object1, object2);
 
   return format(diff, formatter);

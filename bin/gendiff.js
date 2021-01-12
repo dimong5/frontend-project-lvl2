@@ -2,6 +2,7 @@
 
 import program from 'commander';
 import genDiff from '../src/genDiff.js';
+import print from './print.js';
 
 program
   .description('Compares two configuration files and shows a difference.')
@@ -9,6 +10,6 @@ program
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format [type]', 'output format', 'stylish')
   .action((filepath1, filepath2, option) => {
-    genDiff(filepath1, filepath2, option.format);
+    print(genDiff(filepath1, filepath2, option.format));
   });
 program.parse(process.argv);
