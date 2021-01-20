@@ -1,8 +1,9 @@
 import _ from 'lodash';
 
+const indentSize = 4;
+
 const stringify = (value, depth) => {
   if (!_.isPlainObject(value)) return value;
-  const indentSize = 4;
   const currentIndent = ' '.repeat(depth * indentSize);
   const bracketIndent = ' '.repeat(depth * indentSize - indentSize);
   const lines = Object
@@ -12,7 +13,6 @@ const stringify = (value, depth) => {
 
 const stylish = (diffTree) => {
   const iter = (tree, depth) => tree.flatMap((node) => {
-    const indentSize = 4;
     const currentIndent = ' '.repeat(depth * indentSize - 2);
     const bracketIndent = ' '.repeat(depth * indentSize);
     switch (node.type) {
